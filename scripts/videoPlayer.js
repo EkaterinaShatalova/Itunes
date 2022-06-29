@@ -8,6 +8,11 @@ const videoPlayerInit = () => {
   const videoTimePassed  = document.querySelector('.video-time__passed');
   const videoTimeTotal  = document.querySelector('.video-time__total');
   const videoProgress  = document.querySelector('.video-progress');
+  const videoVolume =  document.querySelector('.video-volume');
+  const videoVolumeUp =  document.querySelector('.fa-volume-up');
+  const videoVolumeDown =  document.querySelector('.fa-volume-down');
+  const videoVolumeOff =  document.querySelector('.fa-volume-off');
+  const videoFullscreen = document.querySelector('.video-fullscreen');
 
   const toggleIcon = () => {
     if (videoPlayer.paused) {
@@ -19,7 +24,8 @@ const videoPlayerInit = () => {
     }
   };
 
-  const togglePlay = () => {
+  const togglePlay = (event) => {
+    event.preventDefault();
     if (videoPlayer.paused) {
       videoPlayer.play();
     }
@@ -34,6 +40,10 @@ const videoPlayerInit = () => {
      toggleIcon();
   };
 
+  const changeVolume = () => {
+    videoPlayer.volume = videoVolume.value / 100;
+  };
+
   videoPlayer.addEventListener('click', togglePlay );
   videoButtonPlay.addEventListener('click', togglePlay);
 
@@ -42,8 +52,12 @@ const videoPlayerInit = () => {
 
   videoButtonStop.addEventListener('click', stopPlay);
 
-  videoProgress.addEventListener('change', (event) => {
+  videoProgress.addEventListener('input', (event) => {
     videoPlayer.currentTime = event.target.value / 100 * videoPlayer.duration;
+  });
+
+  videoFullscreen.addEventListener('click', ()=> {
+    videoPlayer.requestFullscreen();
   });
 
   videoPlayer.addEventListener('timeupdate', () => {
@@ -63,6 +77,52 @@ const videoPlayerInit = () => {
     videoTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;
     videoProgress.value = progress;
   });
+
+  videoVolume.addEventListener('input', changeVolume);
+
+  let preVolume  = videoPlayer.volume;
+
+  videoVolumeUp.addEventListener('click', () => {
+    if (videoPlayer.volume !== 1) {
+      preVolume = videoPlayer.volume;
+      videoPlayer.volume = 1;
+    } else {
+      videoPlayer.volume = preVolume;
+    }
+  });
+
+  videoVolumeDown.addEventListener('click', () => {
+    if (videoPlayer.volume !== 0) {
+      preVolume = videoPlayer.volume;
+      videoPlayer.volume = 0;
+    } else {
+      videoPlayer.volume = preVolume;
+    }
+  });
+
+  videoVolumeOff.addEventListener('click', ()=> {
+    if (videoPlayer.volume !== 0) {
+      preVolume = videoPlayer.volume;
+      videoPlayer.volume = 0;
+    } else {
+      videoPlayer.volume = preVolume;
+    }
+    
+  });
+
+  videoPlayer.addEventListener('volumechange', () => {
+    videoVolume.value  = Math.round(videoPlayer.volume * 100);
+  });
+
+  videoPlayer.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        videoPlayer.removeEventListener('click', togglePlay );
+      } else {
+        videoPlayer.addEventListener('click', togglePlay );
+      }
+    }
+  );
+
 };
 
 export default videoPlayerInit;

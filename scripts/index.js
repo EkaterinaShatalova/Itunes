@@ -2,7 +2,7 @@
 
 import { radioPlayerInit } from "./radioPlayer.js";
 import { musicPlayerInit } from "./musicPlayer.js";
-import { videoPlayerInit } from "./videoPlayer.js";
+import videoPlayerInit from "./videoPlayer.js";   //если в файле экспорт дефлот, можно не указывать фигурные скобки и назвать переменную как угодно
 
 const playerBtn = document.querySelectorAll('.player-btn'); //получаем псевдомассив nodeList - коллекция
 const playerBlock = document.querySelectorAll('.player-block'); //получаем псевдомассив nodeList - коллекция
@@ -17,6 +17,7 @@ const hideAll = () => {
   playerBtn.forEach(elem => {
     elem.classList.remove('active');
   });
+  temp.style.display = 'none';
   // temp.style.display = 'none';
 };
 
@@ -29,7 +30,6 @@ playerBtn.forEach( (elem, i) => {
 });
 
 
-console.log(playerBtn);
-console.log(playerBlock);
-
 radioPlayerInit();
+musicPlayerInit();
+videoPlayerInit();
