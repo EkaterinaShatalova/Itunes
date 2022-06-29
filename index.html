@@ -51,11 +51,7 @@
       <article class="player-block video">
         <div class="container">
           <div class="video-container">
-            <video
-              src="video/rocket_launching.mp4"
-              class="video-player"
-              poster="video/play.svg"
-            ></video>
+            <video src="video/cats.mp4" class="video-player" poster="video/play.svg"></video>
             <nav class="video-navigation">
               <button class="video-button video-button__play fa fa-play"></button>
               <button class="video-button video-button__stop fa fa-stop"></button>
@@ -133,16 +129,16 @@
                 <li class="radio-item">
                   <label>
                     <div class="radio-check">
-                      <img class="radio-img" src="radio/RTLGroove.png" alt="обложка" />
+                      <img class="radio-img" src="radio/novoe-radio.png" alt="обложка" />
                     </div>
                     <input
                       class="radio-btn"
                       type="radio"
                       id="RTLGroove"
                       name="radioStantion"
-                      data-radio-stantion="http://shoutcast.rtl.it:3040/"
+                      data-radio-stantion="https://icecast-newradio.cdnvideo.ru/newradio3"
                     />
-                    <span class="radio-name">RTL Groove</span>
+                    <span class="radio-name">Новое радио</span>
                   </label>
                 </li>
 
@@ -156,7 +152,7 @@
                       type="radio"
                       id="energy"
                       name="radioStantion"
-                      data-radio-stantion="http://ic4.101.ru:8000/region_energy_161"
+                      data-radio-stantion="https://pub0301.101.ru:8443/stream/air/mp3/256/99"
                     />
                     <span class="radio-name">Energy</span>
                   </label>
@@ -165,32 +161,32 @@
                 <li class="radio-item">
                   <label>
                     <div class="radio-check">
-                      <img class="radio-img" src="radio/Record.jpg" alt="обложка" />
+                      <img class="radio-img" src="radio/europe.png" alt="обложка" />
                     </div>
                     <input
                       class="radio-btn"
                       type="radio"
                       id="recordRus"
                       name="radioStantion"
-                      data-radio-stantion="http://air.radiorecord.ru:8102/rus_320"
+                      data-radio-stantion="https://europaplus.hostingradio.ru:8014/europaplus320.mp3"
                     />
-                    <span class="radio-name">Record Rus</span>
+                    <span class="radio-name">Европа плюс</span>
                   </label>
                 </li>
 
                 <li class="radio-item">
                   <label>
                     <div class="radio-check">
-                      <img class="radio-img" src="radio/slowRadio.jpg" alt="обложка" />
+                      <img class="radio-img" src="radio/tsoi.png" alt="обложка" />
                     </div>
                     <input
                       class="radio-btn"
                       type="radio"
                       id="slowRadio"
                       name="radioStantion"
-                      data-radio-stantion="http://air.radiorecord.ru:8102/mdl_320"
+                      data-radio-stantion="https://pub0302.101.ru:8443/stream/pro/aac/64/103"
                     />
-                    <span class="radio-name">Медляк FM</span>
+                    <span class="radio-name">Цой FM</span>
                   </label>
                 </li>
 
@@ -213,16 +209,16 @@
                 <li class="radio-item">
                   <label>
                     <div class="radio-check">
-                      <img class="radio-img" src="radio/90.jpg" alt="обложка" />
+                      <img class="radio-img" src="radio/Relax.png" alt="обложка" />
                     </div>
                     <input
                       class="radio-btn"
                       type="radio"
                       id="90years"
                       name="radioStantion"
-                      data-radio-stantion="http://online.radiorecord.ru:8102/sd90_320"
+                      data-radio-stantion="https://pub0301.101.ru:8443/stream/air/mp3/256/200"
                     />
-                    <span class="radio-name">90-e</span>
+                    <span class="radio-name">Релакс FM</span>
                   </label>
                 </li>
               </ul>
@@ -230,7 +226,28 @@
           </div>
         </div>
         <footer class="footer-fix radio-footer">
-          <button class="radio-stop fa fa-play"></button>
+          <button class="radio-stop fa fa-play" style="margin-right: 20px"></button>
+          <span
+            class="fa fa-volume-down radio-icon-down"
+            style="margin-right: 10px; cursor: pointer"
+          ></span>
+          <input
+            type="range"
+            class="radio-volume"
+            min="0"
+            max="100"
+            step="1"
+            value="50"
+            style="max-width: 100px; margin-right: 5px; cursor: pointer"
+          />
+          <span
+            class="fa fa-volume-up radio-icon-up"
+            style="margin-right: 10px; cursor: pointer"
+          ></span>
+          <span
+            class="fa fa-volume-off radio-icon-off"
+            style="cursor: pointer; margin-right: 10px"
+          ></span>
         </footer>
       </article>
     </main>
