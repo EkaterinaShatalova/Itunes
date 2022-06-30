@@ -1,8 +1,8 @@
 /*jshint esversion: 8 */
 
-import radioPlayerInit from "./radioPlayer.js";
-import { musicPlayerInit } from "./musicPlayer.js";
-import videoPlayerInit from "./videoPlayer.js";
+import radioPlayerInit from "./module/radioPlayer.js";
+import musicPlayerInit from "./module/musicPlayer.js";
+import videoPlayerInit from "./module/videoPlayer.js";
 
 const playerBtn = document.querySelectorAll(".player-btn");
 const playerBlock = document.querySelectorAll(".player-block");
@@ -18,6 +18,7 @@ const deactivation = () => {
   temp.style.display = "none";
   videoPlayerInit.stop();
   radioPlayerInit.stop();
+  musicPlayerInit.stop();
 };
 
 playerBtn.forEach((elem, i) => {

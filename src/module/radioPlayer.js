@@ -16,6 +16,7 @@ const radioPlayerInit = () => {
   const audio = new Audio();
 
   audio.type = "audio/aac";
+
   const changeRadioVolume = () => {
     audio.volume = radioVolume.value / 100;
   };
@@ -80,7 +81,6 @@ const radioPlayerInit = () => {
 
   radioVolumeDown.addEventListener("click", () => {
     if (audio.volume !== 0) {
-      console.log(audio.volume);
       preRadioVolume = audio.volume;
       audio.volume = 0;
     } else {
